@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My E-Commerce Store</title>
+<link rel="stylesheet" href="style.css">
+<script src="cart.js" defer></script>
+<script src="products.js" defer></script>
+</head>
+<body>
+<header>
+  <h1>My E-Commerce Store</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="cover.html">Covers</a>
+    <a href="accessories.html">Accessories</a>
+    <a href="cart.html">Cart</a>
+    <a href="help.html">Help</a>
+  </nav>
+</header>
+
+<!-- Slideshow -->
+<section class="slideshow">
+  <img src="images/cover1.jpg" alt="Slide 1" class="slide active">
+  <img src="images/accessory1.jpg" alt="Slide 2" class="slide">
+  <img src="images/cover2.jpg" alt="Slide 3" class="slide">
+</section>
+
+<!-- Categories -->
+<section class="categories">
+  <div class="category">
+    <a href="cover.html"><img src="images/cover1.jpg" alt="Covers"></a>
+    <h2>Covers</h2>
+  </div>
+  <div class="category">
+    <a href="accessories.html"><img src="images/accessory1.jpg" alt="Accessories"></a>
+    <h2>Accessories</h2>
+  </div>
+</section>
+
+<script>
+// Slideshow JS
+let slides = document.querySelectorAll('.slide');
+let current = 0;
+setInterval(() => {
+  slides[current].classList.remove('active');
+  current = (current + 1) % slides.length;
+  slides[current].classList.add('active');
+}, 3000);
+</script>
+</body>
+  </html>
