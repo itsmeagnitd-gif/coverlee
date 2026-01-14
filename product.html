@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details</title>
+<link rel="stylesheet" href="style.css">
+<script src="products.js" defer></script>
+<script src="cart.js" defer></script>
+</head>
+<body>
+<header>
+  <h1>Product Details</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="cart.html">Cart</a>
+  </nav>
+</header>
+
+<section id="product-detail"></section>
+
+<script>
+function getProductById(id){
+  return covers.concat(accessories).find(p => p.id==id);
+}
+
+const params = new URLSearchParams(window.location.search);
+const productId = params.get('id');
+const product = getProductById(productId);
+
+const detail = document.getElementById('product-detail');
+detail.innerHTML = product ? `
+  <img src="${product.img}" alt="${product.name}">
+  <h2>${product.name}</h2>
+  <p>${product.desc}</p>
+  <p>Price: ₹${product.price}</p>
+  <button onclick="addToCart(${product.id}, '${product.name}', ${product.price})">Add to Cart</button>
+` : '<p>Product not found.</p>';
+</script>
+</body>
+</html>
