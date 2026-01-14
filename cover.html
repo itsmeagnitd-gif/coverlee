@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Covers</title>
+<link rel="stylesheet" href="style.css">
+<script src="products.js" defer></script>
+<script src="cart.js" defer></script>
+</head>
+<body>
+<header>
+  <h1>Covers</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="accessories.html">Accessories</a>
+    <a href="cart.html">Cart</a>
+    <a href="help.html">Help</a>
+  </nav>
+</header>
+
+<section class="products" id="product-list">
+  <!-- Products will load here dynamically -->
+</section>
+
+<script>
+const covers = [
+  {id:1, name:"Red Cover", price:499, desc:"High-quality red cover. 20% discount!", img:"images/cover1.jpg"},
+  {id:2, name:"Blue Cover", price:599, desc:"Durable blue cover. 10% off!", img:"images/cover2.jpg"}
+];
+
+function displayProducts(products, containerId) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+  products.forEach(p => {
+    const div = document.createElement('div');
+    div.className = 'product';
+    div.innerHTML = `
+      <img src="${p.img}" alt="${p.name}" onclick="window.location='product.html?id=${p.id}'">
+      <h3>${p.name}</h3>
+      <p>${p.desc}</p>
+      <p>₹${p.price}</p>
+      <button onclick="addToCart(${p.id}, '${p.name}', ${p.price})">Add to Cart</button>
+    `;
+    container.appendChild(div);
+  });
+}
+
+displayProducts(covers, 'product-list');
+</script>
+</body>
+</html>
